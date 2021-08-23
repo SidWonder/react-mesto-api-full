@@ -1,0 +1,11 @@
+.place__wrapper{
+    display: grid;
+    grid-template-columns: 218px 22px;
+    grid-template-areas:
+            "header like"
+            "header count";
+    grid-row-gap: 3px;
+        max-height: 80px;
+        padding: 25px 20px 31px 20px;
+        box-sizing: border-box;
+}

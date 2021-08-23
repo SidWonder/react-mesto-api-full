@@ -1,0 +1,13 @@
+.header__link-noauth{
+    text-decoration: none;
+    color: white;
+
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.header__link-noauth:hover {
+    transition: all 0.8s;
+    color: #A9A9A9;
+}

@@ -1,0 +1,17 @@
+.profile__button_add {
+    flex: 0 0 150px;
+    width: 150px;
+    height: 50px;
+    padding: 0;
+    background-image: url("../../../../img/icons/add-button.png");
+    border-radius: 2px;
+}
+
+@media (min-width: 320px) and (max-width: 800px) {
+    .profile__button_add {
+        flex: 1 0 50px;
+        background-image: url("../../../../img/icons/add-button_mobile.png");
+        width: 282px;
+        margin-top: 36px;
+    }
+}

@@ -1,0 +1,18 @@
+.authform__button {
+  min-width: 358px;
+  min-height: 50px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.22;
+  transition: background-color 200ms ease-in-out;
+  margin: 216px 0 15px;
+  outline: 0;
+}
+
+.authform__button:hover {
+  background-color: rgba(256, 256, 256, 0.8);
+  cursor: pointer
+}

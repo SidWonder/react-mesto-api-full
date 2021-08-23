@@ -1,0 +1,7 @@
+.place{
+    box-sizing: border-box;
+    border-radius: 10px 10px 10px 10px;
+    background-color: white;
+    line-height:0;
+    position: relative;
+}

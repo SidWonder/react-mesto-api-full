@@ -1,0 +1,13 @@
+.popup__register_type_ok {
+    background-image: url(../../../img/icons/registration-ok.svg);
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+}
+
+.popup__register_type_error {
+    background-image: url(../../../img/icons/registration-error.svg);
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+}
