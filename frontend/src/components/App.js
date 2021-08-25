@@ -9,7 +9,7 @@ import AddPlacePopup from './AddPlacePopup';
 import ImagePopup from './ImagePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
-import api from '../utils/api';
+import Api from '../utils/api';
 import * as auth from '../utils/auth';
 import Register from './Register';
 import Login from './Login';
@@ -33,6 +33,15 @@ function App() {
 	const [showInfoTooltip, setShowInfoTooltip] = React.useState(false);
 
 	const history = useHistory();
+	
+	const token = localStorage.getItem('token');
+	const api = new Api({
+		baseUrl: 'https://sidwonder.mesto.nomoredomains.club/api/',
+		headers: {
+			authorization: `Bearer ${token}`,
+			'Content-Type': 'application/json'
+		}
+	});
 
 	React.useEffect(() => {
 		async function fetchData() {
@@ -55,7 +64,6 @@ function App() {
 	}, []);
 
 	function tokenCheck() {
-		const token = localStorage.getItem('token');
 		if (!token) {
 			return;
 		}

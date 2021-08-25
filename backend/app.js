@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { celebrate, Joi, errors } = require('celebrate');
 
+console.log(process.env.JWT_SECRET);
 const NotFoundError = require('./errors/not-found-err');
 const users = require('./routes/users');
 const cards = require('./routes/cards');
@@ -14,6 +16,18 @@ const { createUser } = require('./controllers/createUser');
 
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+
+const options = {
+  origin: [
+    'http://localhost:3000',
+    'https://sidwonder.mesto.nomoredomains.club',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Accept'],
+  credentials: true,
+};
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -28,6 +42,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(helmet());
 app.disable('x-powered-by');
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate({
   body: Joi.object()
