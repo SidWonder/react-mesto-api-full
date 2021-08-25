@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { celebrate, Joi, errors } = require('celebrate');
+const cors = require('cors');
 
-console.log(process.env.JWT_SECRET);
 const NotFoundError = require('./errors/not-found-err');
 const users = require('./routes/users');
 const cards = require('./routes/cards');
@@ -36,6 +36,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useCreateIndex: true,
   useFindAndModify: false,
 });
+
+app.use('*', cors(options));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
