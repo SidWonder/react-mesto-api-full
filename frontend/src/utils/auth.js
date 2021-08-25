@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://sidwonder.mesto.nomoredomains.club/api/';
+export const BASE_URL = 'https://sidwonder.mesto.nomoredomains.club/api';
 
 export const register = (email, password) =>  fetch(`${BASE_URL}/signup`, {
         method: 'POST',
