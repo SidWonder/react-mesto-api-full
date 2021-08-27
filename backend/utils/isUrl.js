@@ -3,7 +3,6 @@ const validator = require('validator');
 
 function isURL(url) {
   const result = validator.isURL(url, { require_protocol: true });
-  console.log('ff');
   if (result) {
     return url;
   }
