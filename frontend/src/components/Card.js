@@ -1,13 +1,18 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 
 // eslint-disable-next-line react/prop-types
 export default function Card({card, onCardClick, onCardLike, onCardDelete}) {
 	const currentUser = React.useContext(CurrentUserContext);
+	console.log("cards", currentUser);
+	// let { card } = card;
+	
 	// eslint-disable-next-line react/prop-types
-	const {name,link,likes} = card;
+	const {name ,link,likes} = card;
+	// console.log(card.owner === currentUser._id);//
 	// eslint-disable-next-line react/prop-types
-	const isOwn = card.owner._id === currentUser._id;
+	const isOwn = card.owner === currentUser._id;
 	const DeleteBtn = () => (
 		<button type="button"
 			className="place__button place__button_delete"
@@ -15,7 +20,7 @@ export default function Card({card, onCardClick, onCardLike, onCardDelete}) {
 			onClick={handleDeleteClick}
 		></button>);
 	// eslint-disable-next-line react/prop-types
-	const isLiked = card.likes.some(i => i._id === currentUser._id);
+	const isLiked = card.likes.some(i => i === currentUser._id);
 	const cardLikeButtonClassName = `${isLiked ? 'place__button_like-active' : ''}`;
     
 	function handleClick() {

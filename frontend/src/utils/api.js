@@ -68,7 +68,7 @@
     }
 
     addLike(data){
-        return fetch (`${this.baseUrl}/cards/likes/${data['_id']}`, {
+        return fetch (`${this.baseUrl}/cards/${data['_id']}/likes/`, {
             method: 'PUT',
             headers: this.headers,
             credentials: 'include'
@@ -76,7 +76,7 @@
     }
 
     deleteLike(data){
-        return fetch (`${this.baseUrl}/cards/likes/${data['_id']}`, {
+        return fetch (`${this.baseUrl}/cards/${data['_id']}/likes/`, {
             method: 'DELETE',
             headers: this.headers,
             credentials: 'include'

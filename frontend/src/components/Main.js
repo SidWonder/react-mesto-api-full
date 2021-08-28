@@ -8,6 +8,7 @@ import Card from './Card';
 export default function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, handleCardLike, handleCardDelete, onCardDelete, onCardLike, cards}) {
 	const currentUser = React.useContext(CurrentUserContext);
 	const {about, name, avatar} = currentUser;
+	console.log(cards);
 	return (
 			<main className="content">
 				<section className="profile">

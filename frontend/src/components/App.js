@@ -49,7 +49,10 @@ function App() {
 			return userInfo;
 		}
 		fetchData()
-			.then(data=> setCurrentUser(data))
+			.then(data=> {
+				const {user} = data;
+				console.log(user);
+				setCurrentUser(user)})
 			.catch(err => console.log(err));
 	}, []);
 
@@ -78,9 +81,10 @@ function App() {
 				}
 			})
 			.then((res) => {
-				const data = res.data ? res.data : {};
+				const {user} = res ? res : {};
+				console.log(user);
 				setIsLogged(true);
-				setUserInfo(data);
+				setUserInfo(user);
 			})
 			.catch((err) => console.log(err));
 	}
@@ -119,22 +123,25 @@ function App() {
 
 	function handleUpdateUser(userData) {
 		api.setUserInfo(userData).then((data) => {
-			setCurrentUser(data);
+			const {user} = data;
+			console.log('handleUpdateUser', data);
+			setCurrentUser(user);
 			handleCloseAll();
 		}).catch((err) => { console.log(err); });
 	}
 
 	function handleUpdateAvatar(userData) {
 		api.setUserAvatar(userData).then((data) => {
-			setCurrentUser(data);
+			const {user} = data;
+			console.log('handleUpdateAvatar', data);
+			setCurrentUser(user);
 			handleCloseAll();
 		}).catch((err) => { console.log(err); });
 	}
 
 
 	function handleCardLike(card) {
-		// Снова проверяем, есть ли уже лайк на этой карточке
-		const isLiked = card.likes.some(i => i._id === currentUser._id);
+		const isLiked = card.likes.some(i => i === currentUser._id);
 		if (!isLiked) {
 			api.addLike(card).then((newCard) => {
 				setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
@@ -153,8 +160,11 @@ function App() {
 	}
 
 	function handleAddPlace(placeData) {
+		debugger;
+		console.log(placeData);
 		api.addNewCard(placeData).then((data) => {
-			setCards([data, ...cards]);
+			const {card} = data;
+			setCards([card, ...cards]);
 			handleCloseAll();
 		}).catch((err) => { console.log(err); });
 	}
