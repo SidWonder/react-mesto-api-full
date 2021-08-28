@@ -36,7 +36,7 @@ function App() {
 	
 	const token = localStorage.getItem('token');
 	const api = new Api({
-		baseUrl: 'https://api.sidwonder.mesto.nomoredomains.monster/',
+		baseUrl: 'https://api.sidwonder.mesto.nomoredomains.monster',
 		headers: {
 			authorization: `Bearer ${token}`,
 			'Content-Type': 'application/json'

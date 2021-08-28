@@ -17,17 +17,6 @@ const { createUser } = require('./controllers/createUser');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const corsOptions = require('./middlewares/cors');
-// const options = {
-//   origin: [
-//     'http://localhost:3000',
-//     'https://sidwonder.mesto.nomoredomains.club',
-//   ],
-//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204,
-//   allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Accept'],
-//   credentials: true,
-// };
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -36,6 +25,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
+  useUnifiedTopology: true,
 });
 
 app.use('*', corsOptions);
