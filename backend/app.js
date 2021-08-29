@@ -49,7 +49,7 @@ app.post('/signin', celebrate({
       password: Joi.string().required(),
     }),
 }), login);
-
+// В ревью было сказано удалить ревью, но он используется в валидации
 app.post('/signup', celebrate({
   body: Joi.object()
     .keys({
